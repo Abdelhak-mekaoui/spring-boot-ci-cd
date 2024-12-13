@@ -67,7 +67,7 @@ pipeline {
 
         stage('Trivy Image Scan') {
             steps {
-                sh 'trivy image mekaouiabdelhak1/spring-boot-ci-cd:${BUILD_VERSION}'
+                sh 'trivy image --scanners vuln mekaouiabdelhak1/spring-boot-ci-cd:${BUILD_VERSION}'
             }
         }
 
