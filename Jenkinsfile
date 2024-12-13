@@ -67,7 +67,7 @@ pipeline {
 
         stage('Trivy Image Scan') {
             steps {
-                sh 'trivy image mekaouiabdelhak1/spring-boot-testing:${BUILD_VERSION}'
+                sh 'trivy image mekaouiabdelhak1/spring-boot-ci-cd:${BUILD_VERSION}'
             }
         }
 
@@ -75,7 +75,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'dockerHubUsername', passwordVariable: 'dockerHubPassword')]) {
                     sh "docker login -u ${env.dockerHubUsername} -p ${env.dockerHubPassword}"
-                    sh "docker push mekaouiabdelhak1/spring-boot-testing:${BUILD_VERSION}"
+                    sh "docker push mekaouiabdelhak1/spring-boot-ci-cd:${BUILD_VERSION}"
                 }
             }
         }
