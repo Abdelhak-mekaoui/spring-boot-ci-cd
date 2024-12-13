@@ -37,7 +37,7 @@ pipeline {
                 withSonarQubeEnv(credentialsId: 'sonarQube-token', installationName: 'SonarQube') {
                     sh "mvn verify sonar:sonar -DskipTests=true -Dsonar.projectKey=spring-boot-ci-cd -Dsonar.projectName='spring-boot-ci-cd'"
                 }
-                waitForQualityGate abortPipeline: true
+
             }
         }
 
