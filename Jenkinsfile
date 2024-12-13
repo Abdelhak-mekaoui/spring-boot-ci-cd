@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         BUILD_VERSION = readMavenPom().getVersion()
-        DOCKER_IMAGE = 'mohyehia99/spring-boot-ci-cd'
+        DOCKER_IMAGE = 'mekaouiabdelhak1/spring-boot-ci-cd'
     }
 
     stages {
