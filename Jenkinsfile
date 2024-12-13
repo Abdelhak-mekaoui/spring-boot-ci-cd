@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         BUILD_VERSION = readMavenPom().getVersion()
-        DOCKER_IMAGE = 'mohyehia99/spring-boot-testing'
+        DOCKER_IMAGE = 'mohyehia99/spring-boot-ci-cd'
     }
 
     stages {
@@ -22,7 +22,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/mohyehia/spring-boot-testing'
+                git branch: 'main', url: 'https://github.com/Abdelhak-mekaoui/spring-boot-ci-cd'
             }
         }
 
@@ -35,7 +35,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv(credentialsId: 'sonarQube-token', installationName: 'SonarQube') {
-                    sh "mvn verify sonar:sonar -DskipTests=true -Dsonar.projectKey=spring-boot-testing -Dsonar.projectName='spring-boot-testing'"
+                    sh "mvn verify sonar:sonar -DskipTests=true -Dsonar.projectKey=spring-boot-ci-cd -Dsonar.projectName='spring-boot-ci-cd'"
                 }
                 waitForQualityGate abortPipeline: true
             }
