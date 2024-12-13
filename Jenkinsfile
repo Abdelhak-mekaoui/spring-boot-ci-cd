@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        BUILD_VERSION = readMavenPom().getVersion()
+        BUILD_VERSION = readMavenPom(file: 'pom.xml').getVersion()
         DOCKER_IMAGE = 'mekaouiabdelhak1/spring-boot-ci-cd'
     }
 
@@ -78,7 +78,7 @@ pipeline {
 
         stage('Trivy Image Scan') {
             steps {
-                sh 'trivy image mohyehia99/spring-boot-testing:${BUILD_VERSION}'
+                sh 'trivy image mekaouiabdelhak1/spring-boot-testing:${BUILD_VERSION}'
             }
         }
 
@@ -86,7 +86,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'dockerHubUsername', passwordVariable: 'dockerHubPassword')]) {
                     sh "docker login -u ${env.dockerHubUsername} -p ${env.dockerHubPassword}"
-                    sh "docker push mohyehia99/spring-boot-testing:${BUILD_VERSION}"
+                    sh "docker push mekaouiabdelhak1/spring-boot-testing:${BUILD_VERSION}"
                 }
             }
         }
