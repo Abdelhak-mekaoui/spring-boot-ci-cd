@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.moh.yehia</groupId>
-    <artifactId>spring-boot-testing</artifactId>
+    <artifactId>spring-boot-ci-cd</artifactId>
     <version>0.0.8</version>
-    <name>spring-boot-testing</name>
+    <name>spring-boot-ci-cd</name>
     <description>Demo project for Spring Boot Testing using Junit &amp; Mockito</description>
     <properties>
         <java.version>17</java.version>
@@ -105,7 +105,7 @@
                         <env>
                             <BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
                         </env>
-                        <name>mohyehia99/${project.name}:${project.version}</name>
+                        <name>mekaouiabdelhak1/${project.name}:${project.version}</name>
                         <publish>false</publish>
                     </image>
                     <docker>
